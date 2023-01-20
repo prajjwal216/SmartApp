@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   title: {
-    fontFamily: FONTS.NunitoBold,
+    fontWeight: 'bold',
     fontSize: 25,
+    color:COLOR.PRIMARY
   },
   description: {
     fontFamily: FONTS.NunitoRegular,
     fontSize: 18,
+    
   },
   button: {
     backgroundColor: COLOR.PRIMARY,

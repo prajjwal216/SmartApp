@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
    alignSelf:'center',
    marginTop:10
   },
+  textStyle:{
+    flex:0.95,
+    fontSize:17,
+    marginTop:11
+  },
   form: {
     backgroundColor: COLOR.WHITE,
     borderWidth:2,
@@ -32,8 +37,11 @@ const styles = StyleSheet.create({
     
   },
   container1:{
+    flex:1,
+    flexDirection:'row',
     backgroundColor: COLOR.WHITE,
     width: '100%',
+    height:50,
 
     borderWidth: 2,
     borderRadius: 5,
@@ -47,7 +55,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.NunitoBold,
   },
   calendarView:{
-    
+    marginTop:5,
     alignItems:'flex-end'
    
   }

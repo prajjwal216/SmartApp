@@ -9,12 +9,13 @@ import {
 import GLOBALS from '../../../assets';
 const {IMAGE} = GLOBALS;
 import styles from './style';
+import moment from 'moment';
 import {getQuizzes} from '../../../util/dataBase';
 
 const HomeScreen = ({navigation}) => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-
+  var currentdate = moment().format('D MMM YYYY').toString();
   const getAllQuizzes = async () => {
     setRefreshing(true);
     const quizzes = await getQuizzes();
@@ -48,7 +49,10 @@ const HomeScreen = ({navigation}) => {
               <Text style={styles.title}>{quiz.title}</Text>
               {quiz.description != '' ? (
                 <Text style={styles.description}>{quiz.description}</Text>
+                
               ) : null}
+              <Text style={styles.description}>Time Limit : {quiz.time} min</Text>
+              <Text style={styles.description}>Last Date : {quiz.date}</Text>
             </View>
             <TouchableOpacity
               style={styles.button}

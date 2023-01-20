@@ -21,7 +21,7 @@ const AddQuiz = ({ navigation }) => {
   const saveQuiz = async (data) => {
     const currentQuizId = Math.floor(100000 + Math.random() * 9000).toString();
     // Save to firestore
-    await createQuiz(currentQuizId, data.title, data.description, data.time);
+    await createQuiz(currentQuizId, data.title, data.description, data.time,lastdate);
 
     //navigate to add Question
     navigation.navigate('AddQuestion', {
