@@ -14,48 +14,20 @@ const data = [
   },
 ];
 
-const CustomRadio = ({control, name, rules = {}, label}) => {
+const CustomRadio = ({name, rules = {}, label,selectedBtn}) => {
   return (
-    <Controller
-      control={control}
-      name={name}
-      rules={rules}
-      render={({field: {value, onChange, onBlur}, fieldState: {error}}) => (
-        <>
-          <Text style={styles.heading}>{label}</Text>
-          <View
-            style={[
-              styles.container,
-              {borderColor: error ? 'red' : COLOR.WHITE},
-            ]}>
-            <RadioButtonRN
-              boxStyle={styles.box}
-              style={styles.radio}
-              textStyle={styles.text}
-              data={data}
-              selectedBtn={onChange}
-              icon={
-                <Icon
-                  name="radio-button-on-outline"
-                  size={25}
-                  color="#2c9dd1"
-                />
-              }
-            />
-          </View>
-          {error && (
-            <Text
-              style={{
-                color: 'red',
-                alignSelf: 'stretch',
-                fontFamily: FONTS.NunitoRegular,
-              }}>
-              {error.message || 'Error'}
-            </Text>
-          )}
-        </>
-      )}
-    />
+    <View style={styles.container}>
+      <Text style={styles.heading}>{label}</Text>
+
+      <RadioButtonRN
+        boxStyle={styles.box}
+        style={styles.radio}
+        textStyle={styles.text}
+        data={data}
+        selectedBtn={selectedBtn}
+        icon={<Icon name="radio-button-on-outline" size={25} color="#2c9dd1" />}
+      />
+    </View>
   );
 };
 
@@ -63,19 +35,15 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLOR.WHITE,
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 2,
     borderRadius: 5,
     paddingHorizontal: 10,
-    marginVertical: 5,
+    marginVertical: 10,
+ 
   },
   radio: {
     flex: 1,
-    //backgroundColor: 'pink',
-    flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingHorizontal: 10,
+    paddingHorizontal: 80,
   },
   input: {
     fontSize: 18,
@@ -88,8 +56,6 @@ const styles = StyleSheet.create({
   },
   box: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     borderColor: COLOR.WHITE,
     height: 40,
     width: 200,

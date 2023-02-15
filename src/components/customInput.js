@@ -1,75 +1,140 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
-import {Controller} from 'react-hook-form';
+import {TextInput, StyleSheet, View, Text} from 'react-native';
+
 import FONTS from '../assets/fonts/index';
 import COLOR from '../assets/color';
 
-const CustomInput = ({
-  control,
-  name,
-  rules = {},
+export default function CustomInput({
   placeholder,
-  secureTextEntry,
   label,
-}) => {
+  onChange,
+  onChangeText,
+  value,
+  secureTextEntry,
+  autoCaps,
+  editable,
+  keyboardType,
+  maxLength,
+  editablestyle,
+  type,
+  textInputStyle,
+}) {
   return (
-    <Controller
-      control={control}
-      name={name}
-      rules={rules}
-      render={({field: {value, onChange, onBlur}, fieldState: {error}}) => (
-        <>
-          <Text style={styles.heading}>{label}</Text>
-          <View
-            style={[
-              styles.container,
-              {borderColor: error ? 'red' : COLOR.PRIMARY},
-            ]}>
-            <TextInput
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              placeholder={placeholder}
-              style={styles.input}
-              secureTextEntry={secureTextEntry}
-            />
-          </View>
-          {error && (
-            <Text
-              style={{
-                color: 'red',
-                alignSelf: 'stretch',
-                fontFamily: FONTS.NunitoRegular,
-              }}>
-              {error.message || 'Error'}
-            </Text>
-          )}
-        </>
-      )}
-    />
+    <View style={styles.mainstyle}>
+      <Text style={styles.labelstyle}>{label} </Text>
+      <TextInput
+        style={[styles.inputstyle, textInputStyle, editablestyle]}
+        placeholder={placeholder}
+        onChange={onChange}
+        onChangeText={onChangeText}
+        value={value}
+        secureTextEntry={secureTextEntry}
+        autoCapitalize={autoCaps}
+        editable={editable}
+        keyboardType={keyboardType}
+        maxLength={maxLength}
+      />
+    </View>
   );
-};
-
+}
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLOR.WHITE,
-    width: '100%',
-
-    borderWidth: 2,
-    borderRadius: 5,
-
-    paddingHorizontal: 10,
-    marginVertical: 5,
+  mainstyle: {
+    marginHorizontal: 20,
   },
-  input: {
-    fontSize: 18,
-    fontFamily: FONTS.NunitoRegular,
+  inputstyle: {
+    borderWidth: 1,
+    borderColor: 'black',
+    height: 40,
+    borderRadius: 8,
+    paddingLeft: 8,
+    fontSize: 16,
   },
-  heading: {
-    marginTop: 10,
-    fontFamily: FONTS.NunitoBold,
+  labelstyle: {
+    color: 'lightgrey',
     fontSize: 18,
+   // fontFamily: FONTS.REGULAR,
+    marginTop: -18,
+    fontWeight: '400',
+    fontStyle: 'normal',
   },
 });
 
-export default CustomInput;
+
+
+
+// import React from 'react';
+// import {View, Text, TextInput, StyleSheet} from 'react-native';
+// import {Controller} from 'react-hook-form';
+
+// const CustomInput = ({
+//   control,
+//   name,
+//   rules = {},
+//   placeholder,
+//   secureTextEntry,
+//   label,
+//   key,
+//   keyboardType,
+// }) => {
+//   return (
+//     <Controller
+//       control={control}
+//       name={name}
+//       rules={rules}
+//       render={({field: {value, onChange, onBlur}, fieldState: {error}}) => (
+//         <>
+//           <Text style={styles.heading}>{label}</Text>
+//           <View
+//             style={[styles.container, {borderColor: error ? 'red' : 'black'}]}>
+//             <TextInput
+//               value={value}
+//               key={key}
+//               onChangeText={onChange}
+//               onBlur={onBlur}
+//               placeholder={placeholder}
+//               style={styles.input}
+//               keyboardType={keyboardType}
+//               secureTextEntry={secureTextEntry}
+//             />
+//           </View>
+//           {error && (
+//             <Text
+//               style={{
+//                 color: 'red',
+//                 alignSelf: 'stretch',
+//               }}>
+//               {error.message || 'Error'}
+//             </Text>
+//           )}
+//         </>
+//       )}
+//     />
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     backgroundColor: 'white',
+//     width: '100%',
+//     justifyContent: 'center',
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     height: 40,
+//     alignSelf: 'flex-start',
+//     paddingHorizontal: 5,
+//     marginVertical: 5,
+//   },
+//   input: {
+//     //backgroundColor: 'red',
+//     fontSize: 18,
+//     height: 60,
+//   },
+//   heading: {
+//     marginTop: 10,
+
+//     fontSize: 18,
+//   },
+// });
+
+// export default CustomInput;
+
